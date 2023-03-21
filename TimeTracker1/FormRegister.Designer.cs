@@ -1,4 +1,4 @@
-namespace TimeTracker1
+п»їnamespace TimeTracker1
 {
     partial class FormRegister
     {
@@ -60,7 +60,7 @@ namespace TimeTracker1
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(482, 29);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Зарегистрировать нового пользователя";
+            this.label1.Text = "Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊ РЅРѕРІРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel1
@@ -100,7 +100,7 @@ namespace TimeTracker1
             this.buttonClearAll.Name = "buttonClearAll";
             this.buttonClearAll.Size = new System.Drawing.Size(195, 35);
             this.buttonClearAll.TabIndex = 24;
-            this.buttonClearAll.Text = "Очистить все поля";
+            this.buttonClearAll.Text = "РћС‡РёСЃС‚РёС‚СЊ РІСЃРµ РїРѕР»СЏ";
             this.buttonClearAll.UseVisualStyleBackColor = true;
             // 
             // textBox5
@@ -121,7 +121,7 @@ namespace TimeTracker1
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(84, 19);
             this.label5.TabIndex = 22;
-            this.label5.Text = "Телефон*:";
+            this.label5.Text = "РўРµР»РµС„РѕРЅ*:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label6
@@ -132,7 +132,7 @@ namespace TimeTracker1
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(165, 19);
             this.label6.TabIndex = 21;
-            this.label6.Text = "Электронная почта*:";
+            this.label6.Text = "Р­Р»РµРєС‚СЂРѕРЅРЅР°СЏ РїРѕС‡С‚Р°*:";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox6
@@ -163,7 +163,7 @@ namespace TimeTracker1
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(87, 19);
             this.label9.TabIndex = 18;
-            this.label9.Text = "Фамилия*:";
+            this.label9.Text = "Р¤Р°РјРёР»РёСЏ*:";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox7
@@ -184,7 +184,7 @@ namespace TimeTracker1
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(52, 19);
             this.label8.TabIndex = 16;
-            this.label8.Text = "Имя*:";
+            this.label8.Text = "РРјСЏ*:";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label7
@@ -195,7 +195,7 @@ namespace TimeTracker1
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(83, 19);
             this.label7.TabIndex = 14;
-            this.label7.Text = "Отчество:";
+            this.label7.Text = "РћС‚С‡РµСЃС‚РІРѕ:";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox4
@@ -226,7 +226,7 @@ namespace TimeTracker1
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(156, 19);
             this.label4.TabIndex = 8;
-            this.label4.Text = "Повторите пароль*:";
+            this.label4.Text = "РџРѕРІС‚РѕСЂРёС‚Рµ РїР°СЂРѕР»СЊ*:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // buttonRegister
@@ -238,7 +238,7 @@ namespace TimeTracker1
             this.buttonRegister.Name = "buttonRegister";
             this.buttonRegister.Size = new System.Drawing.Size(195, 35);
             this.buttonRegister.TabIndex = 6;
-            this.buttonRegister.Text = "Зарегистрироваться";
+            this.buttonRegister.Text = "Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ";
             this.buttonRegister.UseVisualStyleBackColor = true;
             // 
             // textBox2
@@ -270,7 +270,7 @@ namespace TimeTracker1
             this.labelGoToLogForm.Name = "labelGoToLogForm";
             this.labelGoToLogForm.Size = new System.Drawing.Size(183, 15);
             this.labelGoToLogForm.TabIndex = 3;
-            this.labelGoToLogForm.Text = "Перейти к окну авторизации";
+            this.labelGoToLogForm.Text = "РџРµСЂРµР№С‚Рё Рє РѕРєРЅСѓ Р°РІС‚РѕСЂРёР·Р°С†РёРё";
             this.labelGoToLogForm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.labelGoToLogForm.Click += new System.EventHandler(this.labelGoToLogForm_Click);
             // 
@@ -282,7 +282,7 @@ namespace TimeTracker1
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(78, 19);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Пароль*: ";
+            this.label3.Text = "РџР°СЂРѕР»СЊ*: ";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
@@ -293,7 +293,7 @@ namespace TimeTracker1
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 19);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Логин*:";
+            this.label2.Text = "Р›РѕРіРёРЅ*:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FormRegister
@@ -307,7 +307,7 @@ namespace TimeTracker1
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "FormRegister";
-            this.Text = "Регистрация";
+            this.Text = "Р РµРіРёСЃС‚СЂР°С†РёСЏ";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormRegister_FormClosed);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

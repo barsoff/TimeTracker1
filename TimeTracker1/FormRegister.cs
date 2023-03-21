@@ -1,4 +1,4 @@
-using System;
+п»їusing System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +12,7 @@ namespace TimeTracker1
 {
     public partial class FormRegister : Form
     {
-        private bool isClose = true; // Флаг для того, чтобы приложение не закрывалось при закрытии формы
+        private bool isClose = true; // Р¤Р»Р°Рі РґР»СЏ С‚РѕРіРѕ, С‡С‚РѕР±С‹ РїСЂРёР»РѕР¶РµРЅРёРµ РЅРµ Р·Р°РєСЂС‹РІР°Р»РѕСЃСЊ РїСЂРё Р·Р°РєСЂС‹С‚РёРё С„РѕСЂРјС‹
         public FormRegister()
         {
             InitializeComponent();
