@@ -43,10 +43,10 @@ namespace TimeTracker1
         }
         private void labelGoToRegForm_Click(object sender, EventArgs e)
         {
-            /*this.Hide();
+            this.Hide();
             FormRegister reg = new FormRegister();
             reg.Owner = this;
-            reg.ShowDialog();*/
+            reg.ShowDialog();
         }
     }
 }
