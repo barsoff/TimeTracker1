@@ -37,8 +37,5 @@ namespace TimeTracker1.DataBase
         }
 
 
-
-
-
     }
 }

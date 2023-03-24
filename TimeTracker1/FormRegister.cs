@@ -33,5 +33,10 @@ namespace TimeTracker1
                 Application.Exit();
             }
         }
+
+        private void buttonRegister_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("\n   Вы успешно зарегистрированы   \n\n");
+        }
     }
 }
