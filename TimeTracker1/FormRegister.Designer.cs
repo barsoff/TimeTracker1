@@ -60,7 +60,7 @@
             this.label1.Font = new System.Drawing.Font("Constantia", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(42, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(482, 29);
+            this.label1.Size = new System.Drawing.Size(602, 37);
             this.label1.TabIndex = 0;
             this.label1.Text = "Зарегистрировать нового пользователя";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -104,6 +104,7 @@
             this.buttonClearAll.TabIndex = 24;
             this.buttonClearAll.Text = "Очистить все поля";
             this.buttonClearAll.UseVisualStyleBackColor = true;
+            this.buttonClearAll.Click += new System.EventHandler(this.buttonClearAll_Click);
             // 
             // textBox5
             // 
@@ -112,7 +113,7 @@
             this.textBox5.ForeColor = System.Drawing.SystemColors.WindowText;
             this.textBox5.Location = new System.Drawing.Point(317, 281);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(250, 27);
+            this.textBox5.Size = new System.Drawing.Size(250, 32);
             this.textBox5.TabIndex = 23;
             // 
             // label5
@@ -121,7 +122,7 @@
             this.label5.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label5.Location = new System.Drawing.Point(313, 259);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(84, 19);
+            this.label5.Size = new System.Drawing.Size(102, 24);
             this.label5.TabIndex = 22;
             this.label5.Text = "Телефон*:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -132,7 +133,7 @@
             this.label6.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label6.Location = new System.Drawing.Point(313, 326);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(165, 19);
+            this.label6.Size = new System.Drawing.Size(205, 24);
             this.label6.TabIndex = 21;
             this.label6.Text = "Электронная почта*:";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -144,7 +145,7 @@
             this.textBox6.ForeColor = System.Drawing.SystemColors.WindowText;
             this.textBox6.Location = new System.Drawing.Point(317, 348);
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(250, 27);
+            this.textBox6.Size = new System.Drawing.Size(250, 32);
             this.textBox6.TabIndex = 20;
             // 
             // textBox8
@@ -154,7 +155,7 @@
             this.textBox8.ForeColor = System.Drawing.SystemColors.WindowText;
             this.textBox8.Location = new System.Drawing.Point(317, 84);
             this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(250, 27);
+            this.textBox8.Size = new System.Drawing.Size(250, 32);
             this.textBox8.TabIndex = 19;
             // 
             // label9
@@ -163,7 +164,7 @@
             this.label9.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label9.Location = new System.Drawing.Point(313, 62);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(87, 19);
+            this.label9.Size = new System.Drawing.Size(107, 24);
             this.label9.TabIndex = 18;
             this.label9.Text = "Фамилия*:";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -175,7 +176,7 @@
             this.textBox7.ForeColor = System.Drawing.SystemColors.WindowText;
             this.textBox7.Location = new System.Drawing.Point(317, 149);
             this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(250, 27);
+            this.textBox7.Size = new System.Drawing.Size(250, 32);
             this.textBox7.TabIndex = 17;
             // 
             // label8
@@ -184,7 +185,7 @@
             this.label8.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label8.Location = new System.Drawing.Point(313, 127);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(52, 19);
+            this.label8.Size = new System.Drawing.Size(64, 24);
             this.label8.TabIndex = 16;
             this.label8.Text = "Имя*:";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -195,9 +196,9 @@
             this.label7.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label7.Location = new System.Drawing.Point(313, 194);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(83, 19);
+            this.label7.Size = new System.Drawing.Size(111, 24);
             this.label7.TabIndex = 14;
-            this.label7.Text = "Отчество:";
+            this.label7.Text = "Отчество*:";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // textBox4
@@ -207,7 +208,7 @@
             this.textBox4.ForeColor = System.Drawing.SystemColors.WindowText;
             this.textBox4.Location = new System.Drawing.Point(317, 216);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(250, 27);
+            this.textBox4.Size = new System.Drawing.Size(250, 32);
             this.textBox4.TabIndex = 11;
             // 
             // textBox3
@@ -218,7 +219,7 @@
             this.textBox3.Location = new System.Drawing.Point(28, 281);
             this.textBox3.Name = "textBox3";
             this.textBox3.PasswordChar = '*';
-            this.textBox3.Size = new System.Drawing.Size(250, 27);
+            this.textBox3.Size = new System.Drawing.Size(250, 32);
             this.textBox3.TabIndex = 9;
             // 
             // label4
@@ -227,7 +228,7 @@
             this.label4.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label4.Location = new System.Drawing.Point(24, 259);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(156, 19);
+            this.label4.Size = new System.Drawing.Size(193, 24);
             this.label4.TabIndex = 8;
             this.label4.Text = "Повторите пароль*:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -253,7 +254,7 @@
             this.textBox2.Location = new System.Drawing.Point(28, 213);
             this.textBox2.Name = "textBox2";
             this.textBox2.PasswordChar = '*';
-            this.textBox2.Size = new System.Drawing.Size(250, 27);
+            this.textBox2.Size = new System.Drawing.Size(250, 32);
             this.textBox2.TabIndex = 5;
             // 
             // textBox1
@@ -263,7 +264,7 @@
             this.textBox1.ForeColor = System.Drawing.SystemColors.WindowText;
             this.textBox1.Location = new System.Drawing.Point(28, 149);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(250, 27);
+            this.textBox1.Size = new System.Drawing.Size(250, 32);
             this.textBox1.TabIndex = 4;
             // 
             // labelGoToLogForm
@@ -273,7 +274,7 @@
             this.labelGoToLogForm.Font = new System.Drawing.Font("Constantia", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelGoToLogForm.Location = new System.Drawing.Point(355, 488);
             this.labelGoToLogForm.Name = "labelGoToLogForm";
-            this.labelGoToLogForm.Size = new System.Drawing.Size(183, 15);
+            this.labelGoToLogForm.Size = new System.Drawing.Size(238, 21);
             this.labelGoToLogForm.TabIndex = 3;
             this.labelGoToLogForm.Text = "Перейти к окну авторизации";
             this.labelGoToLogForm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -285,7 +286,7 @@
             this.label3.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.Location = new System.Drawing.Point(24, 191);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 19);
+            this.label3.Size = new System.Drawing.Size(96, 24);
             this.label3.TabIndex = 2;
             this.label3.Text = "Пароль*: ";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -296,14 +297,14 @@
             this.label2.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.Location = new System.Drawing.Point(24, 127);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 19);
+            this.label2.Size = new System.Drawing.Size(82, 24);
             this.label2.TabIndex = 1;
             this.label2.Text = "Логин*:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FormRegister
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(635, 539);

@@ -46,7 +46,7 @@
             this.label1.Font = new System.Drawing.Font("Constantia", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(42, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(205, 29);
+            this.label1.Size = new System.Drawing.Size(257, 37);
             this.label1.TabIndex = 0;
             this.label1.Text = "Войти в аккаунт";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -74,7 +74,7 @@
             this.labelForgotPass.Font = new System.Drawing.Font("Constantia", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelForgotPass.Location = new System.Drawing.Point(186, 228);
             this.labelForgotPass.Name = "labelForgotPass";
-            this.labelForgotPass.Size = new System.Drawing.Size(101, 15);
+            this.labelForgotPass.Size = new System.Drawing.Size(131, 21);
             this.labelForgotPass.TabIndex = 7;
             this.labelForgotPass.Text = "Забыли пароль?";
             this.labelForgotPass.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -99,7 +99,7 @@
             this.textBox2.ForeColor = System.Drawing.SystemColors.WindowText;
             this.textBox2.Location = new System.Drawing.Point(20, 148);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(250, 27);
+            this.textBox2.Size = new System.Drawing.Size(250, 32);
             this.textBox2.TabIndex = 5;
             // 
             // textBox1
@@ -109,7 +109,7 @@
             this.textBox1.ForeColor = System.Drawing.SystemColors.WindowText;
             this.textBox1.Location = new System.Drawing.Point(20, 84);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(250, 27);
+            this.textBox1.Size = new System.Drawing.Size(250, 32);
             this.textBox1.TabIndex = 4;
             // 
             // labelGoToRegForm
@@ -119,7 +119,7 @@
             this.labelGoToRegForm.Font = new System.Drawing.Font("Constantia", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelGoToRegForm.Location = new System.Drawing.Point(3, 228);
             this.labelGoToRegForm.Name = "labelGoToRegForm";
-            this.labelGoToRegForm.Size = new System.Drawing.Size(160, 15);
+            this.labelGoToRegForm.Size = new System.Drawing.Size(210, 21);
             this.labelGoToRegForm.TabIndex = 3;
             this.labelGoToRegForm.Text = "Еще нет учетной записи?";
             this.labelGoToRegForm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -131,7 +131,7 @@
             this.label3.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.Location = new System.Drawing.Point(16, 126);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 19);
+            this.label3.Size = new System.Drawing.Size(82, 24);
             this.label3.TabIndex = 2;
             this.label3.Text = "Пароль:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -142,14 +142,14 @@
             this.label2.Font = new System.Drawing.Font("Constantia", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.Location = new System.Drawing.Point(16, 62);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 19);
+            this.label2.Size = new System.Drawing.Size(73, 24);
             this.label2.TabIndex = 1;
             this.label2.Text = "Логин:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FormAuth
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(314, 273);
