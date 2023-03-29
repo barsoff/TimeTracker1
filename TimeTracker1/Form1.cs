@@ -25,20 +25,48 @@ namespace TimeTracker1
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            //ClassUserAuth user = new ClassUserAuth();
-            MessageBox.Show("\r\r\r  Здесь должен быть выполнен вход, но пока этого нет.  \r\r\r");
+            string login = textBox1.Text;
+            string password = textBox2.Text;
+            ClassUserAuht user = new ClassUserAuht(login, password, dataBase);
+
+            if (user.UserId != -1)
+            {
+                if (user.IsActive)
+                {
+                    if (user.Roles.Contains(2))
+                    {
+                        this.Hide();
+                        //FormTimeTracker formTime = new FormTimeTracker();
+                        //formTime.SetUser(user);
+                        //formTime.SetDB(dataBase);
+                        //formTime.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("У вас нет прав для работы с приложением, обратитесь к администратору приложения!");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Данный пользователь заблокирован, обратитесь к администратору системы!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Данного пользователя нет в системе!");
+            }
         }
 
         private void FormAuth_Load(object sender, EventArgs e)
         {
-            if (!dataBase.isConnectToDB(configurationString))
+            if (dataBase.ConnectToDB(configurationString)==null)
             { 
                 MessageBox.Show("\n\n     Проверьте верность данных в строке     \n         для подключения к Базе данных!         \n\n");
                 Application.Exit(); //Если подключение не состоялось, то необходимо закрыть приложение.
             }
             else
             {
-                MessageBox.Show(dataBase.GetMsg);
+                //MessageBox.Show(dataBase.GetMsg);
             }
         }
         private void labelGoToRegForm_Click(object sender, EventArgs e)
@@ -48,5 +76,6 @@ namespace TimeTracker1
             reg.Owner = this;
             reg.ShowDialog();
         }
+
     }
 }

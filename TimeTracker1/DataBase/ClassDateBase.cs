@@ -8,7 +8,7 @@ using Npgsql;
 
 namespace TimeTracker1.DataBase
 {
-    internal class ClassDataBase
+    public class ClassDataBase
     {
         private string configurationToConnect;
         private NpgsqlConnection connection;
@@ -17,24 +17,46 @@ namespace TimeTracker1.DataBase
         public string ConfigurationToConnect { get => configurationToConnect; set => configurationToConnect = value; }
         public string GetMsg { get => msg; }
 
-        public bool isConnectToDB(string configurationToConnect)
+        public NpgsqlConnection ConnectToDB(string configurationToConnect)
         {
             try
             {
                 this.connection = new NpgsqlConnection(configurationToConnect);
                 this.connection.Open();
-                msg = "\n\n     База данных присоединена к программе     \n\n";
-                return true;
-
+                return this.connection;
             }
             catch
             {
                 SystemException e = new SystemException();
                 this.msg = (string)e.Message;
-                return false;
+                return null;
             }
 
         }
+
+        public NpgsqlDataReader SelectFunctionUsing(string nameOfFunction)
+        {
+            if (string.IsNullOrEmpty(nameOfFunction))
+            {
+                return null;
+            }
+            else
+            {
+                var command = new NpgsqlCommand("select * from " + nameOfFunction, this.connection);
+                return command.ExecuteReader();
+            }
+        }
+
+        public void ExecuteScript(string nameOfFunction)
+        {
+            if (!string.IsNullOrEmpty(nameOfFunction))
+            {
+                var command = new NpgsqlCommand(nameOfFunction, this.connection);
+                command.ExecuteReader().Close();
+            }
+        }
+
+
 
 
     }
