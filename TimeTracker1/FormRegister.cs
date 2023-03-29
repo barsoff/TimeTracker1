@@ -45,8 +45,8 @@ namespace TimeTracker1
             connect.Open();
 
             // перенос данных в схемы autorization и public
-            var commandAutorization = new NpgsqlCommand($"insert into autorization.user (firstname, lastname, middlename, phone, email, disabled) values ('{textBox7.Text}', '{textBox8.Text}', '{textBox4.Text}', '{textBox5.Text}','{textBox6.Text}', false)", connect);
-            var commandPublic = new NpgsqlCommand($"insert into public.user (first_name, last_name, middle_name, phone, email, disabled) values ('{textBox7.Text}', '{textBox8.Text}', '{textBox4.Text}', '{textBox5.Text}','{textBox6.Text}', false)", connect);
+            var commandAutorization = new NpgsqlCommand($"insert into autorization.user (firstname, lastname, middlename, phone, email, disabled, login, password) values ('{textBox7.Text}', '{textBox8.Text}', '{textBox4.Text}', '{textBox5.Text}','{textBox6.Text}',false,'{textBox1.Text}','{textBox2.Text}')", connect);
+            var commandPublic = new NpgsqlCommand($"insert into public.user (first_name, last_name, middle_name, phone, email, disabled, login, password) values ('{textBox7.Text}', '{textBox8.Text}', '{textBox4.Text}', '{textBox5.Text}','{textBox6.Text}',false,'{textBox1.Text}','{textBox2.Text}')", connect);
 
             commandAutorization.ExecuteNonQuery();
             commandPublic.ExecuteNonQuery();
