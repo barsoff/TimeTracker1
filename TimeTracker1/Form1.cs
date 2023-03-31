@@ -1,9 +1,13 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -22,13 +26,29 @@ namespace TimeTracker1
         {
             InitializeComponent();
         }
-
+       
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             string login = textBox1.Text;
             string password = textBox2.Text;
-            ClassUserAuht user = new ClassUserAuht(login, password, dataBase);
+            
+            var result = dataBase.SelectFunction("select u.user_id from autorization.user u where u.login = '" +login.Trim()+ "' and u.password = '" +password.Trim()+ "'");
+            string resString = "";
+            while (result.Read())
+            {
+                resString += result.GetValue(0).ToString();
+            }
+            result.Close();
+            if (resString!="")
+            {
+                MessageBox.Show("Вход");
+            } else
+            {
+                MessageBox.Show("Данного пользователя нет в системе!");
+            }
 
+            /*
+            ClassUserAuht user = new ClassUserAuht(login, password, dataBase);
             if (user.UserId != -1)
             {
                 if (user.IsActive)
@@ -55,6 +75,7 @@ namespace TimeTracker1
             {
                 MessageBox.Show("Данного пользователя нет в системе!");
             }
+            */
         }
 
         private void FormAuth_Load(object sender, EventArgs e)
@@ -62,20 +83,16 @@ namespace TimeTracker1
             if (dataBase.ConnectToDB(configurationString)==null)
             { 
                 MessageBox.Show("\n\n     Проверьте верность данных в строке     \n         для подключения к Базе данных!         \n\n");
-                Application.Exit(); //Если подключение не состоялось, то необходимо закрыть приложение.
-            }
-            else
-            {
-                //MessageBox.Show(dataBase.GetMsg);
+                Application.Exit();
             }
         }
         private void labelGoToRegForm_Click(object sender, EventArgs e)
         {
             this.Hide();
             FormRegister reg = new FormRegister();
+            reg.SetDB(dataBase);
             reg.Owner = this;
             reg.ShowDialog();
         }
-
     }
 }
