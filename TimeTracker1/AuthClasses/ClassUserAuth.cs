@@ -27,14 +27,14 @@ namespace TimeTracker1.AuthClasses
         {
             this.dataBase = dataBase;
             this.userId = GetUserId(login, password);
-            this.isActive = UserIsActive(login, password);
+            this.isActive = UserIsActive(login);
 
             if (userId != -1)
             {
                 this.login = login;
                 this.password = password;
 
-                var resultFunction = dataBase.SelectFunctionUsing("main.get_user_info(" + this.userId + ")");
+                var resultFunction = dataBase.SelectFunctionUsing("public.get_user_info(" + this.userId + ")");
                 resultFunction.Read();
                 this.firstname = resultFunction.GetString(0);
                 this.lastname = resultFunction.GetString(1);
@@ -43,7 +43,7 @@ namespace TimeTracker1.AuthClasses
                 this.email = resultFunction.GetString(4);
                 resultFunction.Close();
 
-                resultFunction = dataBase.SelectFunctionUsing("main.get_user_roles(" + this.userId + ")");
+                resultFunction = dataBase.SelectFunctionUsing("public.get_user_roles(" + this.userId + ")");
                 while (resultFunction.Read())
                 {
                     this.roles.Add(resultFunction.GetInt32(0));
@@ -52,17 +52,17 @@ namespace TimeTracker1.AuthClasses
             }
         }
 
-        //Начать от сюда доделвать
         public ClassUserAuht(string login, ClassDataBase dataBase)
         {
             this.dataBase = dataBase;
             this.userId = GetUserId(login);
+            this.isActive = UserIsActive(login);
 
             if (userId != -1)
             {
                 this.login = login;
 
-                var resultFunction = dataBase.SelectFunctionUsing("main.get_user_info(" + this.userId + ")");
+                var resultFunction = dataBase.SelectFunctionUsing("public.get_user_info(" + this.userId + ")");
                 resultFunction.Read();
                 this.firstname = resultFunction.GetString(0);
                 this.lastname = resultFunction.GetString(1);
@@ -71,7 +71,7 @@ namespace TimeTracker1.AuthClasses
                 this.email = resultFunction.GetString(4);
                 resultFunction.Close();
 
-                resultFunction = dataBase.SelectFunctionUsing("main.get_user_roles(" + this.userId + ")");
+                resultFunction = dataBase.SelectFunctionUsing("public.get_user_roles(" + this.userId + ")");
                 while (resultFunction.Read())
                 {
                     this.roles.Add(resultFunction.GetInt32(0));
@@ -93,57 +93,58 @@ namespace TimeTracker1.AuthClasses
 
         public int GetUserId(string login, string password)
         {
-            int result = -1;
+            int res = -1;
             if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
             {
-                return result;
+                return res;
             }
             else
             {
-                var resultFunction = dataBase.SelectFunctionUsing("auth.user_login(\'" + login + "\', \'" + password + "\')");
-                resultFunction.Read();
-                if (resultFunction != null)
+                var result = dataBase.SelectFunction("select u.user_id from autorization.user u where u.login = '" + login.Trim() + "' and u.password = '" + password.Trim() + "'");
+                string resString = "";
+                while (result.Read())
                 {
-                    result = resultFunction.GetInt32(0);
-                    resultFunction.Close();
-                    return result;
-
+                    resString += result.GetValue(0).ToString();
                 }
-                else
+                result.Close();
+                if (resString != "")
                 {
-                    resultFunction.Close();
-                    return result;
+                    return 1;
+                } else
+                {
+                    return 0;
                 }
             }
         }
 
         public int GetUserId(string login)
         {
-            int result = -1;
+            int res = -1;
             if (string.IsNullOrEmpty(login))
             {
-                return result;
+                return res;
             }
             else
             {
-                var resultFunction = dataBase.SelectFunctionUsing("auth.user_login(\'" + login + "\')");
-                resultFunction.Read();
-                if (resultFunction != null)
+                var result = dataBase.SelectFunction("select u.user_id from autorization.user u where u.login = '" + login.Trim() + "'");
+                string resString = "";
+                while (result.Read())
                 {
-                    result = resultFunction.GetInt32(0);
-                    resultFunction.Close();
-                    return result;
-
+                    resString += result.GetValue(0).ToString();
+                }
+                result.Close();
+                if (resString != "")
+                {
+                    return 1;
                 }
                 else
                 {
-                    resultFunction.Close();
-                    return result;
+                    return 0;
                 }
             }
         }
 
-        public bool UserIsActive(string login, string password)
+        public bool UserIsActive(string login)
         {
             bool result = false;
 
@@ -153,7 +154,7 @@ namespace TimeTracker1.AuthClasses
             }
             else
             {
-                var resultFunction = dataBase.SelectFunctionUsing("auth.user_is_active(\'" + login + "\', \'" + password + "\')");
+                var resultFunction = dataBase.SelectFunctionUsing("autorization.user_is_active('" + login + "')");
                 resultFunction.Read();
                 if (resultFunction != null)
                 {

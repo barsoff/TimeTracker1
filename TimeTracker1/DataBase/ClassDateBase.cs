@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,7 @@ namespace TimeTracker1.DataBase
                 this.connection = new NpgsqlConnection(configurationToConnect);
                 this.connection.Open();
                 return this.connection;
+
             }
             catch
             {
@@ -47,6 +49,23 @@ namespace TimeTracker1.DataBase
             }
         }
 
+        public NpgsqlDataReader SelectFunction(string nameOfFunction)
+        {
+            if (string.IsNullOrEmpty(nameOfFunction))
+            {
+                return null;
+            }
+            else
+            {
+                try
+                {
+                    var command = new NpgsqlCommand(nameOfFunction, this.connection);
+                    return command.ExecuteReader();
+                }
+                catch (SystemException e) { MessageBox.Show($"Error:\r\n{e}", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error); return null; }
+            }
+        }
+
         public void ExecuteScript(string nameOfFunction)
         {
             if (!string.IsNullOrEmpty(nameOfFunction))
@@ -55,9 +74,6 @@ namespace TimeTracker1.DataBase
                 command.ExecuteReader().Close();
             }
         }
-
-
-
 
     }
 }
