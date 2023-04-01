@@ -34,21 +34,27 @@ namespace TimeTracker1.AuthClasses
                 this.login = login;
                 this.password = password;
 
-                var resultFunction = dataBase.SelectFunctionUsing("public.get_user_info(" + this.userId + ")");
-                resultFunction.Read();
-                this.firstname = resultFunction.GetString(0);
-                this.lastname = resultFunction.GetString(1);
-                this.middlename = resultFunction.GetString(2);
-                this.phone = resultFunction.GetString(3);
-                this.email = resultFunction.GetString(4);
-                resultFunction.Close();
+                this.firstname = "'+'fn'+'";
+                this.lastname = "'+'ln'+'";
+                this.middlename = "'+'ln'+'";
+                this.phone = "'+'phone'+'";
+                this.email = "'+'emal'+'";
 
-                resultFunction = dataBase.SelectFunctionUsing("public.get_user_roles(" + this.userId + ")");
-                while (resultFunction.Read())
-                {
-                    this.roles.Add(resultFunction.GetInt32(0));
-                }
-                resultFunction.Close();
+                /* var resultFunction = dataBase.SelectFunctionUsing("public.get_user_info(" + this.userId + ")");
+                 resultFunction.Read();
+                 this.firstname = resultFunction.GetString(0);
+                 this.lastname = resultFunction.GetString(1);
+                 this.middlename = resultFunction.GetString(2);
+                 this.phone = resultFunction.GetString(3);
+                 this.email = resultFunction.GetString(4);
+                 resultFunction.Close();
+
+                 resultFunction = dataBase.SelectFunctionUsing("public.get_user_roles(" + this.userId + ")");
+                 while (resultFunction.Read())
+                 {
+                     this.roles.Add(resultFunction.GetInt32(0));
+                 }
+                 resultFunction.Close();*/
             }
         }
 
@@ -61,8 +67,13 @@ namespace TimeTracker1.AuthClasses
             if (userId != -1)
             {
                 this.login = login;
+                this.firstname = "'+'fn'+'";
+                this.lastname = "'+'ln'+'";
+                this.middlename = "'+'ln'+'";
+                this.phone = "'+'phone'+'";
+                this.email = "'+'emal'+'";
 
-                var resultFunction = dataBase.SelectFunctionUsing("public.get_user_info(" + this.userId + ")");
+                /*var resultFunction = dataBase.SelectFunctionUsing("public.get_user_info(" + this.userId + ")");
                 resultFunction.Read();
                 this.firstname = resultFunction.GetString(0);
                 this.lastname = resultFunction.GetString(1);
@@ -76,7 +87,7 @@ namespace TimeTracker1.AuthClasses
                 {
                     this.roles.Add(resultFunction.GetInt32(0));
                 }
-                resultFunction.Close();
+                resultFunction.Close();*/
             }
         }
 
@@ -146,7 +157,8 @@ namespace TimeTracker1.AuthClasses
 
         public bool UserIsActive(string login)
         {
-            bool result = false;
+            return true;
+            /*bool result = false;
 
             if (string.IsNullOrEmpty(login))
             {
@@ -168,7 +180,7 @@ namespace TimeTracker1.AuthClasses
                     resultFunction.Close();
                     return result;
                 }
-            }
+            }*/
 
         }
 
