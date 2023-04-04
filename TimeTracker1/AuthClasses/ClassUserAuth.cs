@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using TimeTracker1.DataBase;
 
 namespace TimeTracker1.AuthClasses
@@ -23,7 +24,7 @@ namespace TimeTracker1.AuthClasses
 
         private ClassDataBase dataBase;
 
-        public ClassUserAuht(string login, string password, ClassDataBase dataBase)
+        public ClassUserAuht(string login, string password, ClassDataBase dataBase) //for 1
         {
             this.dataBase = dataBase;
             this.userId = GetUserId(login, password);
@@ -34,31 +35,26 @@ namespace TimeTracker1.AuthClasses
                 this.login = login;
                 this.password = password;
 
-                this.firstname = "'+'fn'+'";
-                this.lastname = "'+'ln'+'";
-                this.middlename = "'+'ln'+'";
-                this.phone = "'+'phone'+'";
-                this.email = "'+'emal'+'";
-
-                /* var resultFunction = dataBase.SelectFunctionUsing("public.get_user_info(" + this.userId + ")");
-                 resultFunction.Read();
-                 this.firstname = resultFunction.GetString(0);
-                 this.lastname = resultFunction.GetString(1);
-                 this.middlename = resultFunction.GetString(2);
-                 this.phone = resultFunction.GetString(3);
-                 this.email = resultFunction.GetString(4);
-                 resultFunction.Close();
-
-                 resultFunction = dataBase.SelectFunctionUsing("public.get_user_roles(" + this.userId + ")");
-                 while (resultFunction.Read())
-                 {
-                     this.roles.Add(resultFunction.GetInt32(0));
-                 }
-                 resultFunction.Close();*/
+                var result = dataBase.SelectFunction("select * from public.user u where u.user_id = " + this.userId + "");
+                while (result.Read())
+                {
+                    this.firstname = result.GetValue(1).ToString();
+                    this.lastname = result.GetValue(2).ToString();
+                    this.middlename = result.GetValue(3).ToString();
+                    this.phone = result.GetValue(4).ToString();
+                    this.email = result.GetValue(5).ToString();
+                }
+                result.Close();
+                result = dataBase.SelectFunction("select * from public.connect_user_role u where u.user_id = " + this.userId + "");
+                while (result.Read())
+                {
+                    this.roles.Add(result.GetInt32(0));
+                }
+                result.Close();
             }
         }
 
-        public ClassUserAuht(string login, ClassDataBase dataBase)
+        public ClassUserAuht(string login, ClassDataBase dataBase) //for 2
         {
             this.dataBase = dataBase;
             this.userId = GetUserId(login);
@@ -67,27 +63,23 @@ namespace TimeTracker1.AuthClasses
             if (userId != -1)
             {
                 this.login = login;
-                this.firstname = "'+'fn'+'";
-                this.lastname = "'+'ln'+'";
-                this.middlename = "'+'ln'+'";
-                this.phone = "'+'phone'+'";
-                this.email = "'+'emal'+'";
 
-                /*var resultFunction = dataBase.SelectFunctionUsing("public.get_user_info(" + this.userId + ")");
-                resultFunction.Read();
-                this.firstname = resultFunction.GetString(0);
-                this.lastname = resultFunction.GetString(1);
-                this.middlename = resultFunction.GetString(2);
-                this.phone = resultFunction.GetString(3);
-                this.email = resultFunction.GetString(4);
-                resultFunction.Close();
-
-                resultFunction = dataBase.SelectFunctionUsing("public.get_user_roles(" + this.userId + ")");
-                while (resultFunction.Read())
+                var result = dataBase.SelectFunction("select * from public.user u where u.user_id = " + this.userId + "");
+                while (result.Read())
                 {
-                    this.roles.Add(resultFunction.GetInt32(0));
+                    this.firstname = result.GetValue(1).ToString();
+                    this.lastname = result.GetValue(2).ToString();
+                    this.middlename = result.GetValue(3).ToString();
+                    this.phone = result.GetValue(4).ToString();
+                    this.email = result.GetValue(5).ToString();
                 }
-                resultFunction.Close();*/
+                result.Close();
+                result = dataBase.SelectFunction("select * from public.connect_user_role u where u.user_id = " + this.userId + "");
+                while (result.Read())
+                {
+                    this.roles.Add(result.GetInt32(0));
+                }
+                result.Close();
             }
         }
 
@@ -102,40 +94,30 @@ namespace TimeTracker1.AuthClasses
         public string Password { get => password; set => password = value; }
         public int UserId { get => userId; set => userId = value; }
 
-        public int GetUserId(string login, string password)
+        public int GetUserId(string login, string password) //for login and password
         {
             int res = -1;
-            if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
-            {
-                return res;
-            }
-            else
+            if (!string.IsNullOrEmpty(login) && !string.IsNullOrEmpty(password))
             {
                 var result = dataBase.SelectFunction("select u.user_id from autorization.user u where u.login = '" + login.Trim() + "' and u.password = '" + password.Trim() + "'");
-                string resString = "";
+                string resString="";
                 while (result.Read())
                 {
-                    resString += result.GetValue(0).ToString();
+                    resString = result.GetValue(0).ToString();
                 }
                 result.Close();
                 if (resString != "")
                 {
-                    return 1;
-                } else
-                {
-                    return 0;
+                    res = Convert.ToInt32(resString)- Convert.ToInt32("0");
                 }
             }
+            return res;
         }
 
-        public int GetUserId(string login)
+        public int GetUserId(string login) //for only login 
         {
             int res = -1;
-            if (string.IsNullOrEmpty(login))
-            {
-                return res;
-            }
-            else
+            if (!string.IsNullOrEmpty(login))
             {
                 var result = dataBase.SelectFunction("select u.user_id from autorization.user u where u.login = '" + login.Trim() + "'");
                 string resString = "";
@@ -146,44 +128,25 @@ namespace TimeTracker1.AuthClasses
                 result.Close();
                 if (resString != "")
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    res = Convert.ToInt32(resString) - Convert.ToInt32('0');
                 }
             }
+            return res;
         }
 
         public bool UserIsActive(string login)
         {
-            return true;
-            /*bool result = false;
-
-            if (string.IsNullOrEmpty(login))
+            bool res = false;
+            if (!string.IsNullOrEmpty(login))
             {
-                return result;
+                var result = dataBase.SelectFunction("select u.disabled from public.user u where u.user_id = " + this.userId + "");
+                while (result.Read())
+                {
+                    res = result.GetValue(0).Equals(true);
+                }
+                result.Close();
             }
-            else
-            {
-                var resultFunction = dataBase.SelectFunctionUsing("autorization.user_is_active('" + login + "')");
-                resultFunction.Read();
-                if (resultFunction != null)
-                {
-                    result = resultFunction.GetBoolean(0);
-                    resultFunction.Close();
-                    return result;
-
-                }
-                else
-                {
-                    resultFunction.Close();
-                    return result;
-                }
-            }*/
-
+            return res;
         }
-
-
     }
 }
