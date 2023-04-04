@@ -1,4 +1,5 @@
 ﻿using ActiveWindow.BLL.ActiveWindow;
+using Npgsql;
 //using Microsoft.Office.Interop.Excel;
 using System;
 using System.Collections.Generic;
@@ -43,7 +44,7 @@ namespace TimeTracker1
         {
             InitializeComponent();
 
-            /*//Ниже указан код, который необходим для открытия формы по сочетанию клавиш 
+           /*//Ниже указан код, который необходим для открытия формы по сочетанию клавиш 
             HotKey h = new HotKey();
 
             h.Key = Keys.F2;
@@ -69,12 +70,13 @@ namespace TimeTracker1
 
             button1.Enabled = false;
 
-            /*var resultFunc = database.SelectFunctionUsing(string.Format("main.get_timers({0})", user.UserId));
+            /*var resultFunc = database.SelectFunction("select * from public.timer u where u.user_id = user.UserId");
+            //var resultFunc = database.SelectFunction(string.Format("public.get_timers({0})", user.UserId));
             while (resultFunc.Read())
             {
-                dataGridView1.Rows.Add(resultFunc.GetValue(0).ToString().Split(' ')[0], resultFunc.GetValue(1), resultFunc.GetValue(2), resultFunc.GetValue(3), resultFunc.GetValue(4));
+                //dataGridView1.Rows.Add(resultFunc.GetValue(7).ToString().Split(' ')[0], resultFunc.GetValue(5), resultFunc.GetValue(3), resultFunc.GetValue(4), resultFunc.GetValue(5));
             }
-            resultFunc.Close();*/
+            resultFunc.Close();*/  
         }
 
         private void buttonStartStopTimer_Click(object sender, EventArgs e)
@@ -91,12 +93,11 @@ namespace TimeTracker1
                 timer1.Enabled = true;
                 startTime = DateTime.Now;
                 timer.Start();
-
             }
             else
             {
                 buttonStartStopTimer.Text = "Старт";
-                buttonStartStopTimer.BackColor = Color.White;  // Визуальное изменение кнопки
+                buttonStartStopTimer.BackColor = Color.LightGreen;  // Визуальное изменение кнопки
                 buttonIsStart = true;
 
                 endTime = DateTime.Now;
@@ -106,13 +107,9 @@ namespace TimeTracker1
                 labelTime.Text = "00:00:00";
 
                 dataGridView1.Rows.Add(DateTime.Now.Date.ToShortDateString(), textBoxNameForTimeline.Text, startTime.TimeOfDay.ToString().Split('.')[0], endTime.TimeOfDay.ToString().Split('.')[0], time.ToString().Split('.')[0]);
-                //_timer.InsertTimerInfo(user.UserId, DateTime.Now.Date.ToShortDateString(), textBoxNameForTimeline.Text, "" + startTime.TimeOfDay, "" + endTime.TimeOfDay, time.ToString().Split('.')[0], "");
+                _timer.InsertTimerInfo(user.UserId, DateTime.Now.Date.ToShortDateString(), textBoxNameForTimeline.Text, "" + startTime.TimeOfDay, "" + endTime.TimeOfDay, time.ToString().Split('.')[0], "");
                 textBoxNameForTimeline.Clear();
-
-                // Реализовать вызов метода класса для добавления данных в БД, выше сделать работу через классы
             }
-
-
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -163,7 +160,7 @@ namespace TimeTracker1
             listAppStartTime = new List<DateTime>();
             listAppEndTime = new List<DateTime>();
 
-            buttonAutoMod.BackColor = Color.Green;  // Визуальное изменение кнопки
+            buttonAutoMod.BackColor = Color.LightGreen;  // Визуальное изменение кнопки
             buttonAutoMod.Enabled = false;
             buttonStartStopTimer.Enabled = false;
             button1.Enabled = true;
@@ -172,7 +169,7 @@ namespace TimeTracker1
             _tokenSource = new CancellationTokenSource();
             await Task.Run(() => GetApplicationAndTimeInfo(_tokenSource.Token), _tokenSource.Token);
 
-            buttonAutoMod.BackColor = Color.White;  // Визуальное изменение кнопки
+            buttonAutoMod.BackColor = Color.Transparent;  // Визуальное изменение кнопки
             buttonAutoMod.Enabled = true;
             buttonStartStopTimer.Enabled = true;
             button1.Enabled = false;
@@ -187,9 +184,9 @@ namespace TimeTracker1
 
             for (int i = 0; i < listAppCount; i++)
             {
-                //_timer = new ClassTimer(database, user.UserId);
+                _timer = new ClassTimer(database, user.UserId);
                 dataGridView1.Rows.Add(DateTime.Now.Date.ToShortDateString(), listAppName[i], listAppStartTime[i].TimeOfDay.ToString().Split('.')[0], listAppEndTime[i].TimeOfDay.ToString().Split('.')[0], listAppTime[i].ToString().Split('.')[0]);
-                //_timer.InsertTimerInfo(user.UserId, DateTime.Now.Date.ToShortDateString(), listAppName[i], "" + listAppStartTime[i].TimeOfDay, "" + listAppEndTime[i].TimeOfDay, listAppTime[i].ToString().Split('.')[0], listAppName[i]);
+                _timer.InsertTimerInfo(user.UserId, DateTime.Now.Date.ToShortDateString(), listAppName[i], "" + listAppStartTime[i].TimeOfDay, "" + listAppEndTime[i].TimeOfDay, listAppTime[i].ToString().Split('.')[0], listAppName[i]);
 
             }
 
@@ -273,9 +270,9 @@ namespace TimeTracker1
 
             for (int i = 0; i < listAppCount; i++)
             {
-                //_timer = new ClassTimer(database, user.UserId);
+                _timer = new ClassTimer(database, user.UserId);
                 dataGridView1.Rows.Add(DateTime.Now.Date.ToShortDateString(), listAppName[i], listAppStartTime[i].TimeOfDay.ToString().Split('.')[0], listAppEndTime[i].TimeOfDay.ToString().Split('.')[0], listAppTime[i].ToString().Split('.')[0]);
-                //_timer.InsertTimerInfo(user.UserId, DateTime.Now.Date.ToShortDateString(), listAppName[i], "" + listAppStartTime[i].TimeOfDay, "" + listAppEndTime[i].TimeOfDay, listAppTime[i].ToString().Split('.')[0], listAppName[i]);
+                _timer.InsertTimerInfo(user.UserId, DateTime.Now.Date.ToShortDateString(), listAppName[i], "" + listAppStartTime[i].TimeOfDay, "" + listAppEndTime[i].TimeOfDay, listAppTime[i].ToString().Split('.')[0], listAppName[i]);
 
             }
 
