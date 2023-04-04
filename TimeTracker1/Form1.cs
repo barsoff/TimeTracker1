@@ -34,14 +34,14 @@ namespace TimeTracker1
 
             ClassUserAuht user = new ClassUserAuht(login, password, dataBase);
 
-            var result = dataBase.SelectFunction("select u.user_id from autorization.user u where u.login = '" +login.Trim()+ "' and u.password = '" +password.Trim()+ "'");
+            var result = dataBase.SelectFunction("select u.user_id from autorization.user u where u.login = '" + login.Trim() + "' and u.password = '" + password.Trim() + "'");
             string resString = "";
             while (result.Read())
             {
                 resString += result.GetValue(0).ToString();
             }
             result.Close();
-            if (resString!="")
+            if (resString != "")
             {
                 this.Hide();
                 FormTimeTracker formTime = new FormTimeTracker();
@@ -51,7 +51,7 @@ namespace TimeTracker1
             }
             else
             {
-                MessageBox.Show("Данного пользователя нет в системе!");
+                MessageBox.Show("Неверный логин или пароль");
             }
         }
 
