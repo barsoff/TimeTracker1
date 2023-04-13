@@ -44,8 +44,8 @@ namespace TimeTracker1
         {
             InitializeComponent();
 
-           /*//Ниже указан код, который необходим для открытия формы по сочетанию клавиш 
-            HotKey h = new HotKey();
+          //Ниже указан код, который необходим для открытия формы по сочетанию клавиш 
+            /*HotKey h = new HotKey();
 
             h.Key = Keys.F2;
             h.KeyModifier = HotKey.KeyModifiers.Control; // это добавляет к основной кнопке комбинацию 
@@ -58,25 +58,24 @@ namespace TimeTracker1
             if (!user.Roles.Contains(1))
             {
                 buttonGoToAdminForm.Visible = false;
-            }
-            if (!user.Roles.Contains(3))
-            {
-                buttonGoToFormAnalyze.Visible = false;
-            }
-            if (!user.Roles.Contains(4))
-            {
                 buttonGoToFormAnalyze.Visible = false;
             }
 
             button1.Enabled = false;
 
-            /*var resultFunc = database.SelectFunction("select * from public.timer u where u.user_id = user.UserId");
-            //var resultFunc = database.SelectFunction(string.Format("public.get_timers({0})", user.UserId));
+            var resultFunc = database.SelectFunction("select * from public.timer u where u.user_id = "+user.UserId+"");
             while (resultFunc.Read())
             {
-                //dataGridView1.Rows.Add(resultFunc.GetValue(7).ToString().Split(' ')[0], resultFunc.GetValue(5), resultFunc.GetValue(3), resultFunc.GetValue(4), resultFunc.GetValue(5));
+                if (resultFunc.GetValue(5) != "")
+                {
+                    dataGridView1.Rows.Add(resultFunc.GetValue(7).ToString().Split(' ')[0], resultFunc.GetValue(5), resultFunc.GetValue(2), resultFunc.GetValue(3), resultFunc.GetValue(8));
+                } 
+                else
+                {
+                    dataGridView1.Rows.Add(resultFunc.GetValue(7).ToString().Split(' ')[0], resultFunc.GetValue(4), resultFunc.GetValue(2), resultFunc.GetValue(3), resultFunc.GetValue(8));
+                }
             }
-            resultFunc.Close();*/  
+            resultFunc.Close();
         }
 
         private void buttonStartStopTimer_Click(object sender, EventArgs e)
@@ -128,13 +127,12 @@ namespace TimeTracker1
 
         private void buttonGoToAdminForm_Click(object sender, EventArgs e)
         {
-            /*FormAdmin formAdmin = new FormAdmin();
+            FormAdmin formAdmin = new FormAdmin();
             formAdmin.SetUser(user);
             formAdmin.SetDB(database);
             formAdmin.ShowDialog();
             formAdmin.Focus();
-            formAdmin.Owner = this;*/
-            MessageBox.Show("Замена 1");
+            formAdmin.Owner = this;
         }
         public void SetUser(ClassUserAuht _user)
         {
@@ -242,7 +240,8 @@ namespace TimeTracker1
 
         private void onHK(object sender, EventArgs e)
         {
-            PasswordIsCorect();
+            this.Show();
+            _tokenSource.Cancel();
         }
 
         private async void buttonAutoHideMod_Click(object sender, EventArgs e)
@@ -258,15 +257,27 @@ namespace TimeTracker1
             listAppStartTime = new List<DateTime>();
             listAppEndTime = new List<DateTime>();
 
+            buttonAutoMod.BackColor = Color.Green;  // Визуальное изменение кнопки
+            buttonAutoMod.Enabled = false;
+            buttonStartStopTimer.Enabled = false;
+            button1.Enabled = true;
+            buttonAutoHideMod.Enabled = false;
+
             _tokenSource = new CancellationTokenSource();
             await Task.Run(() => GetApplicationAndTimeInfo(_tokenSource.Token), _tokenSource.Token);
+
+            buttonAutoMod.BackColor = Color.White;  // Визуальное изменение кнопки
+            buttonAutoMod.Enabled = true;
+            buttonStartStopTimer.Enabled = true;
+            button1.Enabled = false;
+            buttonAutoHideMod.Enabled = true;
 
             listAppName.RemoveAt(0);
             listAppTime.RemoveAt(0);
             listAppStartTime.RemoveAt(0);
             listAppEndTime.RemoveAt(0);
 
-            listAppCount = listAppName.Count - 1;
+            listAppCount = listAppName.Count;
 
             for (int i = 0; i < listAppCount; i++)
             {
@@ -284,27 +295,15 @@ namespace TimeTracker1
             System.Windows.Forms.Application.Exit();
         }
 
-        private void PasswordIsCorect()
-        {
-            
-            /*FormEnterPassword formEnterPass = new FormEnterPassword();
-            formEnterPass.SetFormTimeTracker(this);
-            formEnterPass.SetUserPassword(user.Password);
-            formEnterPass.Show();*/
-            MessageBox.Show("Замена 2");
-        }
-
         private void buttonGoToFormAnalyze_Click(object sender, EventArgs e)
         {
 
-           /* FormAnalyze formAnalyze = new FormAnalyze();
+            FormAnalyze formAnalyze = new FormAnalyze();
             formAnalyze.Owner = this;
             formAnalyze.SetUser(user);
             formAnalyze.SetDB(database);
 
-            formAnalyze.ShowDialog();*/
-
-            MessageBox.Show("Замена 3");
+            formAnalyze.ShowDialog();
         }
     }
 }

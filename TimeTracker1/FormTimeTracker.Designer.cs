@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
@@ -40,15 +40,15 @@
             this.buttonAutoHideMod = new System.Windows.Forms.Button();
             this.buttonAutoMod = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.labelTime = new System.Windows.Forms.Label();
+            this.textBoxNameForTimeline = new System.Windows.Forms.TextBox();
+            this.buttonStartStopTimer = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.ColumnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStartTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnEndTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnDur = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.labelTime = new System.Windows.Forms.Label();
-            this.textBoxNameForTimeline = new System.Windows.Forms.TextBox();
-            this.buttonStartStopTimer = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -157,20 +157,59 @@
             this.panel1.Size = new System.Drawing.Size(767, 548);
             this.panel1.TabIndex = 3;
             // 
+            // labelTime
+            // 
+            this.labelTime.AutoSize = true;
+            this.labelTime.Font = new System.Drawing.Font("Century Gothic", 16F);
+            this.labelTime.ForeColor = System.Drawing.SystemColors.Control;
+            this.labelTime.Location = new System.Drawing.Point(20, 16);
+            this.labelTime.Name = "labelTime";
+            this.labelTime.Size = new System.Drawing.Size(119, 33);
+            this.labelTime.TabIndex = 21;
+            this.labelTime.Text = "00:00:00";
+            // 
+            // textBoxNameForTimeline
+            // 
+            this.textBoxNameForTimeline.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxNameForTimeline.Font = new System.Drawing.Font("Roboto", 10F);
+            this.textBoxNameForTimeline.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.textBoxNameForTimeline.Location = new System.Drawing.Point(145, 12);
+            this.textBoxNameForTimeline.Multiline = true;
+            this.textBoxNameForTimeline.Name = "textBoxNameForTimeline";
+            this.textBoxNameForTimeline.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxNameForTimeline.Size = new System.Drawing.Size(532, 34);
+            this.textBoxNameForTimeline.TabIndex = 20;
+            // 
+            // buttonStartStopTimer
+            // 
+            this.buttonStartStopTimer.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonStartStopTimer.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonStartStopTimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonStartStopTimer.Font = new System.Drawing.Font("Roboto", 10F);
+            this.buttonStartStopTimer.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.buttonStartStopTimer.Location = new System.Drawing.Point(683, 12);
+            this.buttonStartStopTimer.Name = "buttonStartStopTimer";
+            this.buttonStartStopTimer.Size = new System.Drawing.Size(66, 34);
+            this.buttonStartStopTimer.TabIndex = 10;
+            this.buttonStartStopTimer.Text = "Старт";
+            this.buttonStartStopTimer.UseVisualStyleBackColor = false;
+            this.buttonStartStopTimer.Click += new System.EventHandler(this.buttonStartStopTimer_Click);
+            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
             this.dataGridView1.BackgroundImage = global::TimeTracker1.Properties.Resources.gr72_509_500__2_;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Roboto", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Roboto", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnDate,
@@ -178,25 +217,25 @@
             this.ColumnStartTime,
             this.ColumnEndTime,
             this.ColumnDur});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Roboto", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Roboto", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.Location = new System.Drawing.Point(0, 55);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Roboto", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Roboto", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 20;
             this.dataGridView1.Size = new System.Drawing.Size(749, 490);
@@ -243,44 +282,6 @@
             this.ColumnDur.ReadOnly = true;
             this.ColumnDur.Width = 170;
             // 
-            // labelTime
-            // 
-            this.labelTime.AutoSize = true;
-            this.labelTime.Font = new System.Drawing.Font("Century Gothic", 16F);
-            this.labelTime.ForeColor = System.Drawing.SystemColors.Control;
-            this.labelTime.Location = new System.Drawing.Point(20, 16);
-            this.labelTime.Name = "labelTime";
-            this.labelTime.Size = new System.Drawing.Size(119, 33);
-            this.labelTime.TabIndex = 21;
-            this.labelTime.Text = "00:00:00";
-            // 
-            // textBoxNameForTimeline
-            // 
-            this.textBoxNameForTimeline.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxNameForTimeline.Font = new System.Drawing.Font("Roboto", 10F);
-            this.textBoxNameForTimeline.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.textBoxNameForTimeline.Location = new System.Drawing.Point(145, 12);
-            this.textBoxNameForTimeline.Multiline = true;
-            this.textBoxNameForTimeline.Name = "textBoxNameForTimeline";
-            this.textBoxNameForTimeline.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxNameForTimeline.Size = new System.Drawing.Size(532, 34);
-            this.textBoxNameForTimeline.TabIndex = 20;
-            // 
-            // buttonStartStopTimer
-            // 
-            this.buttonStartStopTimer.BackColor = System.Drawing.Color.LightGreen;
-            this.buttonStartStopTimer.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonStartStopTimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonStartStopTimer.Font = new System.Drawing.Font("Roboto", 10F);
-            this.buttonStartStopTimer.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.buttonStartStopTimer.Location = new System.Drawing.Point(683, 12);
-            this.buttonStartStopTimer.Name = "buttonStartStopTimer";
-            this.buttonStartStopTimer.Size = new System.Drawing.Size(66, 34);
-            this.buttonStartStopTimer.TabIndex = 10;
-            this.buttonStartStopTimer.Text = "Старт";
-            this.buttonStartStopTimer.UseVisualStyleBackColor = false;
-            this.buttonStartStopTimer.Click += new System.EventHandler(this.buttonStartStopTimer_Click);
-            // 
             // FormTimeTracker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -294,6 +295,7 @@
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "FormTimeTracker";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Учет времени";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormTimeTracker_FormClosed);
             this.Load += new System.EventHandler(this.FormTimeTracker_Load);
