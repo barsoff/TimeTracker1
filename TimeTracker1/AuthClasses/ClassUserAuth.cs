@@ -48,7 +48,7 @@ namespace TimeTracker1.AuthClasses
                 result = dataBase.SelectFunction("select * from public.connect_user_role u where u.user_id = " + this.userId + "");
                 while (result.Read())
                 {
-                    this.roles.Add(result.GetInt32(0));
+                    this.roles.Add(result.GetInt32(1));
                 }
                 result.Close();
             }
