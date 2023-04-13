@@ -33,21 +33,28 @@ namespace TimeTracker1
             string password = textBox2.Text;
 
             ClassUserAuht user = new ClassUserAuht(login, password, dataBase);
-
-            var result = dataBase.SelectFunction("select u.user_id from autorization.user u where u.login = '" + login.Trim() + "' and u.password = '" + password.Trim() + "'");
-            string resString = "";
-            while (result.Read())
+           
+            if (user.UserId != -1)
             {
-                resString += result.GetValue(0).ToString();
-            }
-            result.Close();
-            if (resString != "")
-            {
-                this.Hide();
-                FormTimeTracker formTime = new FormTimeTracker();
-                formTime.SetUser(user);
-                formTime.SetDB(dataBase);
-                formTime.ShowDialog();
+                if (user.IsActive)
+                {
+                    if (user.Roles.Contains(2) || user.Roles.Contains(1))
+                    {
+                        this.Hide();
+                        FormTimeTracker formTime = new FormTimeTracker();
+                        formTime.SetUser(user);
+                        formTime.SetDB(dataBase);
+                        formTime.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("У вас нет прав для работы с приложением, обратитесь к администратору приложения!");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Данный пользователь заблокирован, обратитесь к администратору системы!");
+                }
             }
             else
             {
