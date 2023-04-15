@@ -52,7 +52,7 @@ namespace TimeTracker1
             this.database = _db;
         }
 
-        private void buttonChange_Click(object sender, EventArgs e)
+        /*private void buttonChange_Click(object sender, EventArgs e)
         {
             string selectedLogin = dataGridView1.SelectedCells[0].Value.ToString();
             ClassUserAuht selectedUser = new ClassUserAuht(selectedLogin, database);
@@ -60,19 +60,31 @@ namespace TimeTracker1
             //formChangeUser.SetUser(selectedUser);
             //formChangeUser.SetDB(database);
             //formChangeUser.ShowDialog();
-        }
+        }*/
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dataGridView1.CurrentCell.ColumnIndex == 0)
             {
-                buttonChange.Enabled = true;
-                // нужно добавить проверку на активность пользователя
+                //buttonChange.FlatStyle = FlatStyle.Flat;
+                buttonDeleteBlock.FlatStyle = FlatStyle.Flat;
+
+                //buttonChange.Enabled = true;
+                int row = dataGridView1.CurrentCell.RowIndex;
+                if (dataGridView1[6,row].Value == "Да")
+                {
+                    buttonDeleteBlock.Text = "Заблокировать";
+                } else
+                {
+                    buttonDeleteBlock.Text = "Разблокировать";
+                }
                 buttonDeleteBlock.Enabled = true;
             }
             else
             {
-                buttonChange.Enabled = false;
+                //buttonChange.FlatStyle = FlatStyle.Popup;
+                buttonDeleteBlock.FlatStyle = FlatStyle.Popup;
+                //buttonChange.Enabled = false;
                 buttonDeleteBlock.Enabled = false;
             }
         
@@ -80,13 +92,32 @@ namespace TimeTracker1
 
         private void buttonDeleteBlock_Click(object sender, EventArgs e)
         {
-            string script = "update public.user set disabled = false where user_id = "+ dataGridView1.CurrentCell.Value + ";";
-            script += "update autorization.user set disabled = false where user_id = " + dataGridView1.CurrentCell.Value + ";";
-            if (!string.IsNullOrEmpty(script))
+            if (buttonDeleteBlock.Text=="Заблокировать")
             {
-                database.ExecuteScript(script);
-                MessageBox.Show("Пользователь заблокирован");
+                string script = "update public.user set disabled = false where user_id = " + dataGridView1.CurrentCell.Value + ";";
+                script += "update autorization.user set disabled = false where user_id = " + dataGridView1.CurrentCell.Value + ";";
+                if (!string.IsNullOrEmpty(script))
+                {
+                    database.ExecuteScript(script);
+                    MessageBox.Show("Пользователь заблокирован");
+                }
+            } else
+            {
+                string script = "update public.user set disabled = true where user_id = " + dataGridView1.CurrentCell.Value + ";";
+                script += "update autorization.user set disabled = true where user_id = " + dataGridView1.CurrentCell.Value + ";";
+                if (!string.IsNullOrEmpty(script))
+                {
+                    database.ExecuteScript(script);
+                    MessageBox.Show("Пользователь разблокирован");
+                }
             }
+            this.Hide();
+            FormAdmin formAdmin = new FormAdmin();
+            formAdmin.SetUser(user);
+            formAdmin.SetDB(database);
+            formAdmin.ShowDialog();
+            formAdmin.Focus();
+            formAdmin.Owner = this;
         }
     }
 }
