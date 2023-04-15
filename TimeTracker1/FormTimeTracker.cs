@@ -1,6 +1,6 @@
 ﻿using ActiveWindow.BLL.ActiveWindow;
 using Npgsql;
-//using Microsoft.Office.Interop.Excel;
+using Microsoft.Office.Interop.Excel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,7 +16,8 @@ using System.Windows.Forms;
 using TimeTracker1.AuthClasses;
 using TimeTracker1.DataBase;
 using TimeTracker1.TimerClasses;
-
+using MahApps.Metro.Controls;
+using System.Web.Configuration;
 
 namespace TimeTracker1
 {
@@ -44,15 +45,17 @@ namespace TimeTracker1
         {
             InitializeComponent();
 
-          //Ниже указан код, который необходим для открытия формы по сочетанию клавиш 
-            /*HotKey h = new HotKey();
+            //Ниже указан код, который необходим для открытия формы по сочетанию клавиш 
+           /* HotKey h = new HotKey();
 
             h.Key = Keys.F2;
             h.KeyModifier = HotKey.KeyModifiers.Control; // это добавляет к основной кнопке комбинацию 
             h.HotKeyPressed += this.onHK;
             h.Handle = this.Handle;*/
-        }
+   
+    }
 
+     
         private void FormTimeTracker_Load(object sender, EventArgs e)
         {
             if (!user.Roles.Contains(1))
@@ -158,7 +161,10 @@ namespace TimeTracker1
             listAppStartTime = new List<DateTime>();
             listAppEndTime = new List<DateTime>();
 
-            buttonAutoMod.BackColor = Color.LightGreen;  // Визуальное изменение кнопки
+            buttonAutoMod.BackColor = Color.Transparent;  // Визуальное изменение кнопки
+            buttonAutoMod.FlatStyle = FlatStyle.Popup;
+            buttonAutoHideMod.FlatStyle = FlatStyle.Popup;
+            button1.FlatStyle = FlatStyle.Flat;
             buttonAutoMod.Enabled = false;
             buttonStartStopTimer.Enabled = false;
             button1.Enabled = true;
@@ -168,6 +174,9 @@ namespace TimeTracker1
             await Task.Run(() => GetApplicationAndTimeInfo(_tokenSource.Token), _tokenSource.Token);
 
             buttonAutoMod.BackColor = Color.Transparent;  // Визуальное изменение кнопки
+            buttonAutoMod.FlatStyle= FlatStyle.Flat;
+            buttonAutoHideMod.FlatStyle = FlatStyle.Flat;
+            button1.FlatStyle = FlatStyle.Popup;
             buttonAutoMod.Enabled = true;
             buttonStartStopTimer.Enabled = true;
             button1.Enabled = false;
@@ -257,7 +266,10 @@ namespace TimeTracker1
             listAppStartTime = new List<DateTime>();
             listAppEndTime = new List<DateTime>();
 
-            buttonAutoMod.BackColor = Color.Green;  // Визуальное изменение кнопки
+            buttonAutoMod.BackColor = Color.Transparent;  // Визуальное изменение кнопки
+            buttonAutoMod.FlatStyle = FlatStyle.Popup;
+            buttonAutoHideMod.FlatStyle = FlatStyle.Popup;
+            button1.FlatStyle = FlatStyle.Flat; 
             buttonAutoMod.Enabled = false;
             buttonStartStopTimer.Enabled = false;
             button1.Enabled = true;
@@ -266,7 +278,10 @@ namespace TimeTracker1
             _tokenSource = new CancellationTokenSource();
             await Task.Run(() => GetApplicationAndTimeInfo(_tokenSource.Token), _tokenSource.Token);
 
-            buttonAutoMod.BackColor = Color.White;  // Визуальное изменение кнопки
+            buttonAutoMod.BackColor = Color.Transparent;  // Визуальное изменение кнопки
+            buttonAutoMod.FlatStyle = FlatStyle.Flat;
+            buttonAutoHideMod.FlatStyle = FlatStyle.Flat;
+            button1.FlatStyle = FlatStyle.Popup;
             buttonAutoMod.Enabled = true;
             buttonStartStopTimer.Enabled = true;
             button1.Enabled = false;
@@ -302,8 +317,15 @@ namespace TimeTracker1
             formAnalyze.Owner = this;
             formAnalyze.SetUser(user);
             formAnalyze.SetDB(database);
-
             formAnalyze.ShowDialog();
+        }
+
+        private void ExitFromTimeTracker_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FormAuth formauth = new FormAuth();
+            formauth.ShowDialog();
+            System.Windows.Forms.Application.Exit();
         }
     }
 }

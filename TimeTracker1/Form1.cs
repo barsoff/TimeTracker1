@@ -8,8 +8,10 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Net;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using TimeTracker1.AuthClasses;
 using TimeTracker1.DataBase;
@@ -26,7 +28,7 @@ namespace TimeTracker1
         {
             InitializeComponent();
         }
-       
+
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             string login = textBox1.Text;
@@ -45,6 +47,7 @@ namespace TimeTracker1
                         formTime.SetUser(user);
                         formTime.SetDB(dataBase);
                         formTime.ShowDialog();
+
                     }
                     else
                     {

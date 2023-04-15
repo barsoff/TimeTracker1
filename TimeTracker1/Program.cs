@@ -19,4 +19,5 @@ namespace TimeTracker1
             Application.Run(new FormAuth());
         }
     }
+
 }
