@@ -123,6 +123,7 @@
     <Compile Include="BLL\ActiveWindow\ActiveWindowModel.cs" />
     <Compile Include="BLL\ActiveWindow\ActiveWindowWatcher.cs" />
     <Compile Include="BLL\WindowAPI.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="Common\EnumerableExtensions.cs" />
     <Compile Include="Common\Option.cs" />
     <Compile Include="Common\TimerExtensions.cs" />

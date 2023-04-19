@@ -46,12 +46,12 @@ namespace TimeTracker1
             InitializeComponent();
 
             //Ниже указан код, который необходим для открытия формы по сочетанию клавиш 
-           /* HotKey h = new HotKey();
+            HotKey h = new HotKey();
 
             h.Key = Keys.F2;
-            h.KeyModifier = HotKey.KeyModifiers.Control; // это добавляет к основной кнопке комбинацию 
+            h.KeyModifier = HotKey.KeyModifiers.Control;
             h.HotKeyPressed += this.onHK;
-            h.Handle = this.Handle;*/
+            h.Handle = this.Handle;
    
     }
 
@@ -61,7 +61,6 @@ namespace TimeTracker1
             if (!user.Roles.Contains(1))
             {
                 buttonGoToAdminForm.Visible = false;
-                buttonGoToFormAnalyze.Visible = false;
             }
 
             button1.Enabled = false;
@@ -89,7 +88,7 @@ namespace TimeTracker1
             if (buttonIsStart)
             {
                 buttonStartStopTimer.Text = "Стоп";
-                buttonStartStopTimer.BackColor = Color.Tomato;  // Визуальное изменение кнопки
+                buttonStartStopTimer.BackColor = Color.Tomato;  
                 buttonIsStart = false;
 
                 timer1.Enabled = true;
@@ -99,7 +98,7 @@ namespace TimeTracker1
             else
             {
                 buttonStartStopTimer.Text = "Старт";
-                buttonStartStopTimer.BackColor = Color.LightGreen;  // Визуальное изменение кнопки
+                buttonStartStopTimer.BackColor = Color.LightGreen; 
                 buttonIsStart = true;
 
                 endTime = DateTime.Now;
@@ -156,12 +155,12 @@ namespace TimeTracker1
             int listAppCount;
 
             listAppName = new List<string>();
-            listAppName.Add(""); // Нужно будет потом его удалить или игнорировать 
+            listAppName.Add(""); 
             listAppTime = new List<TimeSpan>();
             listAppStartTime = new List<DateTime>();
             listAppEndTime = new List<DateTime>();
 
-            buttonAutoMod.BackColor = Color.Transparent;  // Визуальное изменение кнопки
+            buttonAutoMod.BackColor = Color.Transparent; 
             buttonAutoMod.FlatStyle = FlatStyle.Popup;
             buttonAutoHideMod.FlatStyle = FlatStyle.Popup;
             button1.FlatStyle = FlatStyle.Flat;
@@ -173,7 +172,7 @@ namespace TimeTracker1
             _tokenSource = new CancellationTokenSource();
             await Task.Run(() => GetApplicationAndTimeInfo(_tokenSource.Token), _tokenSource.Token);
 
-            buttonAutoMod.BackColor = Color.Transparent;  // Визуальное изменение кнопки
+            buttonAutoMod.BackColor = Color.Transparent;  
             buttonAutoMod.FlatStyle= FlatStyle.Flat;
             buttonAutoHideMod.FlatStyle = FlatStyle.Flat;
             button1.FlatStyle = FlatStyle.Popup;
@@ -261,7 +260,7 @@ namespace TimeTracker1
             int listAppCount;
 
             listAppName = new List<string>();
-            listAppName.Add(""); // Нужно будет потом его удалить или игнорировать 
+            listAppName.Add(""); 
             listAppTime = new List<TimeSpan>();
             listAppStartTime = new List<DateTime>();
             listAppEndTime = new List<DateTime>();
@@ -318,14 +317,6 @@ namespace TimeTracker1
             formAnalyze.SetUser(user);
             formAnalyze.SetDB(database);
             formAnalyze.ShowDialog();
-        }
-
-        private void ExitFromTimeTracker_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            FormAuth formauth = new FormAuth();
-            formauth.ShowDialog();
-            System.Windows.Forms.Application.Exit();
         }
     }
 }

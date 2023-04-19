@@ -43,6 +43,7 @@ namespace TimeTracker1
             }
             resultFunc.Close();
         }
+
         public void SetUser(ClassUserAuht _user)
         {
             this.user = _user;
@@ -52,47 +53,40 @@ namespace TimeTracker1
             this.database = _db;
         }
 
-        /*private void buttonChange_Click(object sender, EventArgs e)
-        {
-            string selectedLogin = dataGridView1.SelectedCells[0].Value.ToString();
-            ClassUserAuht selectedUser = new ClassUserAuht(selectedLogin, database);
-            //FormChangeUser formChangeUser = new FormChangeUser();
-            //formChangeUser.SetUser(selectedUser);
-            //formChangeUser.SetDB(database);
-            //formChangeUser.ShowDialog();
-        }*/
-
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dataGridView1.CurrentCell.ColumnIndex == 0)
             {
-                //buttonChange.FlatStyle = FlatStyle.Flat;
-                buttonDeleteBlock.FlatStyle = FlatStyle.Flat;
 
-                //buttonChange.Enabled = true;
+                buttonDelete.FlatStyle = FlatStyle.Flat;
+                buttonDelete.Enabled = true; 
+
+                buttonBlock.FlatStyle = FlatStyle.Flat;
+                buttonBlock.Enabled = true;
+
                 int row = dataGridView1.CurrentCell.RowIndex;
                 if (dataGridView1[6,row].Value == "Да")
                 {
-                    buttonDeleteBlock.Text = "Заблокировать";
+                    buttonBlock.Text = "Заблокировать";
                 } else
                 {
-                    buttonDeleteBlock.Text = "Разблокировать";
+                    buttonBlock.Text = "Разблокировать";
                 }
-                buttonDeleteBlock.Enabled = true;
             }
             else
             {
-                //buttonChange.FlatStyle = FlatStyle.Popup;
-                buttonDeleteBlock.FlatStyle = FlatStyle.Popup;
-                //buttonChange.Enabled = false;
-                buttonDeleteBlock.Enabled = false;
+                buttonDelete.FlatStyle = FlatStyle.Popup;
+                buttonDelete.Enabled = false;
+
+                buttonBlock.FlatStyle = FlatStyle.Popup;
+                buttonBlock.Enabled = false;
             }
-        
+
         }
 
-        private void buttonDeleteBlock_Click(object sender, EventArgs e)
+        private void buttonBlock_Click(object sender, EventArgs e)
         {
-            if (buttonDeleteBlock.Text=="Заблокировать")
+            if (buttonBlock.Text=="Заблокировать")
             {
                 string script = "update public.user set disabled = false where user_id = " + dataGridView1.CurrentCell.Value + ";";
                 script += "update autorization.user set disabled = false where user_id = " + dataGridView1.CurrentCell.Value + ";";
@@ -110,6 +104,27 @@ namespace TimeTracker1
                     database.ExecuteScript(script);
                     MessageBox.Show("Пользователь разблокирован");
                 }
+            }
+            this.Hide();
+            FormAdmin formAdmin = new FormAdmin();
+            formAdmin.SetUser(user);
+            formAdmin.SetDB(database);
+            formAdmin.ShowDialog();
+            formAdmin.Focus();
+            formAdmin.Owner = this;
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            string script = "delete from public.connect_user_role where user_id = " + dataGridView1.CurrentCell.Value + ";";
+            script += "delete from autorization.connect_user_role where user_id = " + dataGridView1.CurrentCell.Value + ";";
+            script += "delete from public.timer where user_id = " + dataGridView1.CurrentCell.Value + ";";
+            script += "delete from public.user where user_id = " + dataGridView1.CurrentCell.Value + ";";
+            script += "delete from autorization.user where user_id = " + dataGridView1.CurrentCell.Value + ";";
+            if (!string.IsNullOrEmpty(script))
+            {
+                database.ExecuteScript(script);
+                MessageBox.Show("Пользователь удален");
             }
             this.Hide();
             FormAdmin formAdmin = new FormAdmin();

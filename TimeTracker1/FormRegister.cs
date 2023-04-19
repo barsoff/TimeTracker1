@@ -19,7 +19,7 @@ namespace TimeTracker1
 
         private ClassDataBase database;
 
-        private bool isClose = true; // Флаг для того, чтобы приложение не закрывалось при закрытии формы
+        private bool isClose = true;
         public FormRegister()
         {
             InitializeComponent();
