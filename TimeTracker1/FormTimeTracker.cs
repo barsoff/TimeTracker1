@@ -120,7 +120,7 @@ namespace TimeTracker1
             {
                 labelTime.Text = time.Hours.ToString("00") + ":" + time.Minutes.ToString("00") + ":" + time.Seconds.ToString("00");
             }
-            else if (time.Hours == 24) // Ограничение в 24 часа, так как данный трекер предназначен для использования на предприятии, где рабочая смена не должна быть больше 24 часов
+            else if (time.Hours == 24) 
             {
                 timer.Stop();
                 time = endTime - startTime;
@@ -190,6 +190,10 @@ namespace TimeTracker1
 
             for (int i = 0; i < listAppCount; i++)
             {
+                if (listAppName[i] == "Учет времени")
+                {
+                    continue;
+                }
                 _timer = new ClassTimer(database, user.UserId);
                 dataGridView1.Rows.Add(DateTime.Now.Date.ToShortDateString(), listAppName[i], listAppStartTime[i].TimeOfDay.ToString().Split('.')[0], listAppEndTime[i].TimeOfDay.ToString().Split('.')[0], listAppTime[i].ToString().Split('.')[0]);
                 _timer.InsertTimerInfo(user.UserId, DateTime.Now.Date.ToShortDateString(), listAppName[i], "" + listAppStartTime[i].TimeOfDay, "" + listAppEndTime[i].TimeOfDay, listAppTime[i].ToString().Split('.')[0], listAppName[i]);
@@ -197,8 +201,6 @@ namespace TimeTracker1
             }
 
         }
-
-
 
         private void GetApplicationAndTimeInfo(CancellationToken cancelToken)
         {
@@ -295,6 +297,10 @@ namespace TimeTracker1
 
             for (int i = 0; i < listAppCount; i++)
             {
+                if (listAppName[i]=="Учет времени")
+                {
+                    continue;
+                }
                 _timer = new ClassTimer(database, user.UserId);
                 dataGridView1.Rows.Add(DateTime.Now.Date.ToShortDateString(), listAppName[i], listAppStartTime[i].TimeOfDay.ToString().Split('.')[0], listAppEndTime[i].TimeOfDay.ToString().Split('.')[0], listAppTime[i].ToString().Split('.')[0]);
                 _timer.InsertTimerInfo(user.UserId, DateTime.Now.Date.ToShortDateString(), listAppName[i], "" + listAppStartTime[i].TimeOfDay, "" + listAppEndTime[i].TimeOfDay, listAppTime[i].ToString().Split('.')[0], listAppName[i]);
