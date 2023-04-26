@@ -10,6 +10,7 @@ using System.Linq;
 using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
@@ -20,6 +21,7 @@ namespace TimeTracker1
 {
     public partial class FormAuth : Form
     {
+
         ClassDataBase dataBase = new ClassDataBase();
         private string configurationString = "Host = localhost; Port = 5432; Database = TimeTracker_DateBase; " +
             "Username = postgres; Password = barsoff_21";
@@ -31,9 +33,23 @@ namespace TimeTracker1
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
+            LogInSystem();
+        }
+        protected override bool ProcessCmdKey(ref Message msg, Keys e)
+        {
+            if (e == Keys.Enter)
+            {
+                LogInSystem();
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, e);
+        }
+
+
+        private void LogInSystem()
+        {
             string login = textBox1.Text;
             string password = textBox2.Text;
-
             ClassUserAuht user = new ClassUserAuht(login, password, dataBase);
            
             if (user.UserId != -1)
@@ -47,7 +63,6 @@ namespace TimeTracker1
                         formTime.SetUser(user);
                         formTime.SetDB(dataBase);
                         formTime.ShowDialog();
-
                     }
                     else
                     {
