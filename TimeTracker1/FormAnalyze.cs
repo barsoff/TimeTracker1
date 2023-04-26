@@ -41,6 +41,7 @@ namespace TimeTracker1
                 resultFunc.Close();
             }
         }
+
         public void SetUser(ClassUserAuht _user)
         {
             this.user = _user;
@@ -59,6 +60,7 @@ namespace TimeTracker1
         {
 
         }
+
 
         private void buttonClearFilter_Click(object sender, EventArgs e)
         {
@@ -197,18 +199,14 @@ namespace TimeTracker1
                             }
                             resultFunc.Close();
                         }
-
                     }
                     sheet.Columns[1].ColumnWidth = 15;
                     sheet.Columns[2].ColumnWidth = 10;
                     sheet.Columns[3].ColumnWidth = 15;
-
                     sheet.Cells.Font.Name = "Times New Roman";
                     sheet.Cells.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
                     sheet.Cells.HorizontalAlignment = Excel.XlVAlign.xlVAlignCenter;
-
                     Excel.Chart excelchart = (Excel.Chart)app.Charts.Add(Type.Missing, Type.Missing, Type.Missing, Type.Missing);
-
                     excelchart.Activate();
 
                     //Изменяем тип диаграммы
