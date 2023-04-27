@@ -181,16 +181,16 @@ namespace TimeTracker1
             button1.Enabled = false;
             buttonAutoHideMod.Enabled = true;
 
-            listAppName.RemoveAt(0);
+            /*listAppName.RemoveAt(0);
             listAppTime.RemoveAt(0);
             listAppStartTime.RemoveAt(0);
-            listAppEndTime.RemoveAt(0);
+            listAppEndTime.RemoveAt(0);*/
 
             listAppCount = listAppName.Count;
 
             for (int i = 0; i < listAppCount; i++)
-            {
-                if (listAppName[i] == "Учет времени")
+            { 
+                if (listAppName[i] == "Учет времени" || listAppName[i] == "")
                 {
                     continue;
                 }
@@ -288,16 +288,16 @@ namespace TimeTracker1
             button1.Enabled = false;
             buttonAutoHideMod.Enabled = true;
 
-            listAppName.RemoveAt(0);
+            /*listAppName.RemoveAt(0);
             listAppTime.RemoveAt(0);
             listAppStartTime.RemoveAt(0);
-            listAppEndTime.RemoveAt(0);
+            listAppEndTime.RemoveAt(0);*/
 
             listAppCount = listAppName.Count;
 
             for (int i = 0; i < listAppCount; i++)
             {
-                if (listAppName[i]=="Учет времени")
+                if (listAppName[i] == "Учет времени" || listAppName[i] == "") //|| (i > 0 && listAppName[i - 1] == listAppName[i])
                 {
                     continue;
                 }
