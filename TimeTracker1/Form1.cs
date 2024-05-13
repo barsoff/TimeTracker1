@@ -65,6 +65,8 @@ namespace TimeTracker1
                         formTime.SetDB(dataBase);
                         formTime.ShowDialog();
                     }
+
+
                     else
                     {
                         MessageBox.Show("У вас нет прав для работы с приложением, обратитесь к администратору приложения!");
