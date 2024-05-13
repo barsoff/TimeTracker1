@@ -53,6 +53,7 @@ namespace TimeTracker1
             ClassUserAuht user = new ClassUserAuht(login, password, dataBase);
            
             if (user.UserId != -1)
+
             {
                 if (user.IsActive)
                 {
